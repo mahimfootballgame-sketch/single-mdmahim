@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --novara-navy: #071B3A;
+    --novara-navy-deep: #0B1F42;
+    --novara-blue: #145CFF;
+    --novara-blue-hover: #0E47D9;
+    --novara-ice: #EAF1FF;
+    --novara-surface: #F4F7FF;
+    --novara-border: #E4EAF5;
+    --novara-ink: #101B35;
+    --novara-muted: #64748B;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--novara-surface);
+    color: var(--novara-ink);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-mono-tabular {
+    font-family: 'JetBrains Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom thin dark scrollbar for Admin Sidebar */
+.admin-sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.admin-sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.admin-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+}
+.admin-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes novaraToastShrinkRtl {
+  from {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+  to {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+}
+
+.novara-toast-progress {
+  animation-name: novaraToastShrinkRtl;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .novara-toast-progress {
+    animation-duration: 0.01ms !important;
+  }
+}
